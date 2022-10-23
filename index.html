@@ -16,3 +16,12 @@ layout: default
     </article>
   {% endfor %}
 </div>
+
+<div>
+  {% for tag in site.data.tags %}
+  <span>{{ tag }}:</span>
+  <ul>
+      {% site.data.tags[tag] %}
+  </ul>
+  {% endfor %}
+</div>
