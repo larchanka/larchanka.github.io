@@ -5,7 +5,7 @@ permalink: /tags/
 
 {% for tag in site.tags %}
   <div>
-    Name: {{ tag | first }},
+    Name: <a href="/tag/news/">{{ tag | first }}</a>,
     count: {{ tag | last | size}}
   </div>
 {% endfor %}
