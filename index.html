@@ -21,7 +21,7 @@ layout: default
   {% for tag in site.data.tags %}
   <span>{{ tag }}:</span>
   <ul>
-      {% site.data.tags[tag] %}
+      {{ site.data.tags[tag] }}
   </ul>
   {% endfor %}
 </div>
