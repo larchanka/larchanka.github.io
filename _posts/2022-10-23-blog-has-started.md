@@ -1,7 +1,8 @@
 ---
 layout: post
 title: Это первый пост на русском языке
-categories: [international, news]
+tags: personal news
+updated: 2022-10-23 22:29:00
 ---
 
 ## Этот пост написан на русском языке. Потому что могу

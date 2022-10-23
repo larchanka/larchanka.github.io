@@ -1,7 +1,8 @@
 ---
 layout: post
 title: You're up and running!
-categories: [international, news]
+tags: international news
+updated: 2014-12-01 10:20:00
 ---
 
 Next you can update your site name, avatar and other options using the _config.yml file in the root of your repository (shown below).
