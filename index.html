@@ -17,15 +17,6 @@ layout: default
   {% endfor %}
 </div>
 
-<div>
-  {% for tag in site.data.tags %}
-  <span>{{ tag }}:</span>
-  <ul>
-      {{ site.data.tags[tag] }}
-  </ul>
-  {% endfor %}
-</div>
-
 {% if paginator.total_pages > 1 %}
 <div class="pagination">
   {% if paginator.previous_page %}
