@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Это первый пост на русском языке
-tags: personal news
+tags: [personal, news]
 updated: 2022-10-23 22:29:00
 ---
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: You're up and running!
-tags: international news
+tags: [international, news, two words]
 updated: 2014-12-01 10:20:00
 ---
 
