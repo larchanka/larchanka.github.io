@@ -1,0 +1,11 @@
+---
+layout: default
+permalink: /tags/
+---
+
+{% for tag in site.tags %}
+  <div>
+    Name: {{ tag | first }},
+    count: {{ tag | last | size}}
+  </div>
+{% endfor %}
