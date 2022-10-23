@@ -5,7 +5,7 @@ permalink: /tags/
 
 {% for tag in site.tags %}
   <div>
-    Name: <a href="/tag/{{ tag | slugify }}">{{ tag | first }}</a>,
+    Name: <a href="{{ tag | slugify }}">{{ tag | first }}</a>,
     count: {{ tag | last | size}}
   </div>
 {% endfor %}
