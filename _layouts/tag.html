@@ -3,10 +3,7 @@ layout: default
 ---
 
 <div class="post">
-  <h1>Tag: {{ page.tag }}</h1>
-  <script>
-    console.log(`{{ site.tags[page.tag] }}`)
-  </script>
+  <h1>Tag: {{ {{ site.data.tags[page.tag] }} }}</h1>
 
   <ul>
     {% for post in site.tags[page.tag] %}
