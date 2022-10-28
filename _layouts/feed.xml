@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
+{% assign tag_name = page.tag %}
 
  <title>{{ site.title }}</title>
  <link href="{{ '/atom.xml' | relative_url }}" rel="self"/>
@@ -11,16 +12,14 @@
    <email>{{ site.author.email }}</email>
  </author>
 
- {% for post in site.posts %}
-   {% if post.tags contains page.tag-name %}
-   <entry>
-     <title>{{ post.title | xml_escape }}</title>
-     <link href="{{ site.url }}{{ site.baseurl }}{{ post.url }}"/>
-     <updated>{{ post.date | date_to_xmlschema }}</updated>
-     <id>{{ site.url }}{{ post.id }}</id>
-     <content type="html">{{ post.content | xml_escape }}</content>
-   </entry>
-   {% endif %}
- {% endfor %}
+  {% for post in site.tags[tag_name] %}
+    <entry>
+      <title>{{ post.title | xml_escape }}</title>
+      <link href="{{ site.url }}{{ site.baseurl }}{{ post.url }}"/>
+      <pubDate>{{ post.updated | date_to_xmlschema }}</pubDate>
+      <id>{{ site.url }}{{ post.id }}</id>
+      <content type="html">{{ post.description | xml_escape }}</content>
+    </entry>
+  {% endfor %}
 
 </feed>

@@ -1,8 +1,11 @@
 ---
-layout: post
 title: Это первый пост на русском языке
-tags: [personal, news]
-updated: 2022-10-23 22:29:00
+layout: post
+tags:
+- events
+- news
+- larchanka
+updated: '2022-10-23 22:29:00 +0000'
 ---
 
 ## Этот пост написан на русском языке. Потому что могу

@@ -2,13 +2,13 @@
 layout: default
 ---
 
-{% assign tag_name = page.tag %}
+{% assign author_name = page.author %}
 
 <div class="post">
-  <h1>{{ site.data.tags[tag_name] }}</h1>
+  <h1>{{ site.data.author[author_name] }}</h1>
 
   {% assign postsByDay = 
-    site.tags[tag_name] | group_by_exp:"post", "post.updated | date: '%Y %B'" %}
+    site.tags[author_name] | group_by_exp:"post", "post.updated | date: '%Y %B'" %}
     
   {% if postsByDay and postsByDay.size != 0 %}
 

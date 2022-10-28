@@ -1,0 +1,19 @@
+---
+layout: default
+permalink: /tag/
+---
+
+{% for tag in site.tags %}
+  {% assign tag_name = tag | first %}
+  {% assign tag_title = site.data.tags[tag_name] %}
+  {% assign count = tag | last | size %}
+  <ul class="tags-page-list">
+    {% if tag_title %}
+      <li>
+        <a href="/tag/{{ tag_name }}/">
+          {{ tag_title }} ({{ count }})
+        </a>
+      </li>
+    {% endif %}
+  </ul>
+{% endfor %}

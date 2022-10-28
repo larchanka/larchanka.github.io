@@ -1,7 +1,7 @@
 ---
 layout: post
 title: You're up and running!
-tags: [international, news, two words]
+tags: [news, larchanka]
 preview: https://cdn.mobila.name/images/uploads/6353f1acae053_1_L0jtcMWvl4YtFV7KB5-xlg.jpeg
 description: Что-то здесь написано
 updated: 2014-12-01 10:20:00

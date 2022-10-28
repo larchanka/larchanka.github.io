@@ -5,7 +5,7 @@ layout: default
 <article class="post">
   <h1>{{ page.title }}</h1>
   <small class="date">
-    {{ page.updated | date "%e %b, %H:%M" }}
+    {{ page.updated | date_to_string }}
   </small>
 
   <div class="entry">
@@ -13,12 +13,27 @@ layout: default
   </div>
 
   <div>
+    Теги:
     [
       {% for tag in page.tags %}
         {% capture tag_name %}{{ tag }}{% endcapture %}
-        <a href="/tag/{{ tag_name | slugify }}"><code class="highligher-rouge"><nobr>{{ site.data.tags[tag_name] }}</nobr></code>&nbsp;</a>
+        {% if site.data.tags[tag_name] %}
+          <a href="/tag/{{ tag_name | slugify }}">
+            <code class="highligher-rouge"><nobr>{{ site.data.tags[tag_name] }}</nobr></code>&nbsp;
+          </a>
+        {% endif %}
       {% endfor %}
     ]
+  </div>
+
+  <div>
+    Автор:
+    {% for tag in page.tags %}
+      {% capture tag_name %}{{ tag }}{% endcapture %}
+      {% if site.data.author[tag_name] %}
+        <a href="/author/{{ tag_name | slugify }}"><nobr>{{ site.data.author[tag_name] }}</nobr>&nbsp;</a>
+      {% endif %}
+    {% endfor %}
   </div>
 
   {% include disqus.html %}
