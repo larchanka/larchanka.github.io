@@ -1,0 +1,14 @@
+---
+---
+{
+"authors": [
+    {%- for category in site.data.author -%}
+    "{{ category[0]}}"{% unless forloop.last %},{% endunless %}
+    {%- endfor -%}
+],
+"tags": [
+    {%- for tag in site.data.tags -%}
+    "{{ tag[0] }}"{% unless forloop.last %},{% endunless %}
+    {%- endfor -%}
+]
+}
