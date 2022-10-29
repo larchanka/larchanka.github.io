@@ -31,7 +31,7 @@ layout: default
     {% for tag in page.tags %}
       {% capture tag_name %}{{ tag }}{% endcapture %}
       {% if site.data.author[tag_name] %}
-        <a href="/author/{{ tag_name | slugify }}"><nobr>{{ site.data.author[tag_name] }}</nobr>&nbsp;</a>
+        <a href="/author/{{ tag_name | slugify }}"><nobr>{{ site.data.author[tag_name].name }}</nobr>&nbsp;</a>
       {% endif %}
     {% endfor %}
   </div>

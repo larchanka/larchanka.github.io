@@ -1,9 +1,12 @@
 ---
 layout: post
 title: You're up and running!
-tags: [news, larchanka]
-preview: https://cdn.mobila.name/images/uploads/6353f1acae053_1_L0jtcMWvl4YtFV7KB5-xlg.jpeg
-description: Что-то здесь написано
+description: Британский инди-разработчик Джейкоб Шоу (Jacob Shaw) создаёт симулятор выживания в «бесконечном мебельном магазине» The Store is Closed.
+tags:
+- events
+- city
+category: larchanka
+preview: https://cdn.mobila.name/images/uploads/634ab2cfa6e90_face_id.webp
 updated: 2014-12-01 10:20:00
 ---
 

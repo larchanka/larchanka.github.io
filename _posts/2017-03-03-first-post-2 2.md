@@ -1,0 +1,17 @@
+---
+layout: post
+title: You're up and running!
+description: Британский инди-разработчик Джейкоб Шоу (Jacob Shaw) создаёт симулятор выживания в «бесконечном мебельном магазине» The Store is Closed.
+tags:
+- events
+- city
+category: larchanka
+preview: https://cdn.mobila.name/images/uploads/634ab2cfa6e90_face_id.webp
+updated: 2014-12-01 10:20:00
+---
+
+Next you can update your site name, avatar and other options using the _config.yml file in the root of your repository (shown below).
+
+![_config.yml]({{ site.baseurl }}/images/config.png)
+
+The easiest way to make your first post is to edit this one. Go into /_posts/ and update the Hello World markdown file. For more instructions head over to the [Jekyll Now repository](https://github.com/barryclark/jekyll-now) on GitHub.

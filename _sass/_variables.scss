@@ -19,9 +19,26 @@ $helvetica: Helvetica, Arial, sans-serif;
 $helveticaNeue: "Helvetica Neue", Helvetica, Arial, sans-serif;
 $georgia: Georgia, serif;
 
+:root {
+  --page-bg: rgba(19, 19, 19);
+  --font-color: #fff;
+  --dimmed-color: #999;
+  --header-color: #fff;
+  --link-color: #6ba4dd;
+  --font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --date-font-family: "Roboto Mono";
+  --header-font-family: var(--font-family);
+  --border-radius: 4px;
+}
+
 // Mobile breakpoints
 @mixin mobile {
   @media screen and (max-width: 640px) {
+    @content;
+  }
+}
+@mixin md {
+  @media screen and (min-width: 768px) {
     @content;
   }
 }

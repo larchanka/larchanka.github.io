@@ -10,6 +10,8 @@
     {% seo %}
   </head>
 
+  {% assign current = page.url | split: '.' %}
+
   <body>
     <div class="wrapper-masthead">
       <div class="container">
@@ -22,8 +24,9 @@
           </div>
 
           <nav>
-            <a href="{{ site.baseurl }}/">Новости</a>
-            <a href="{{ site.baseurl }}/about">О нас</a>
+            {% for navItem in site.navigation %}
+            <a href="{{ site.baseurl }}{{ navItem.link }}" id="nav{{ navItem.link | split: '/' | join: '-' }}" {% if current[0] == navItem.link %} class='active'{% endif %}>{{ navItem.name }}</a>
+            {% endfor %}
           </nav>
         </header>
       </div>

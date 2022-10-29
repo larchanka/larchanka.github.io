@@ -81,7 +81,7 @@ plugins:
   - jekyll-feed # Create an Atom feed using the official Jekyll feed gem
   - jekyll-paginate
   - jekyll-seo-tag
-  # - jekyll-admin
+  - jekyll-archives
 
 # Exclude these files from your production _site
 exclude:
@@ -91,10 +91,23 @@ exclude:
   - README.md
   - CNAME
 
-jekyll_admin:
-  hidden_links:
-    # - pages
-    # - staticfiles
-    # - datafiles
-    # - configuration
-  homepage: "pages"
+jekyll-archives:
+  enabled:
+    - categories
+    - tags
+  layouts:
+    category: author
+    tag: tag
+  permalinks:
+    tag: '/tag/:name/'
+    category: '/author/:name/'
+
+navigation:
+  - name: Главная
+    link: /
+  - name: Город
+    link: /tag/city
+  - name: Происшествия
+    link: /tag/911
+  - name: + Еще
+    link: /tag/
