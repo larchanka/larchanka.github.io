@@ -21,13 +21,16 @@ $georgia: Georgia, serif;
 
 :root {
   --page-bg: rgba(19, 19, 19);
+  --dark-bg: #000;
   --font-color: #fff;
   --dimmed-color: #999;
   --header-color: #fff;
   --link-color: #6ba4dd;
+  --link-color-active: #538ac2;
   --font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
   --date-font-family: "Roboto Mono";
-  --header-font-family: var(--font-family);
+  --logo-font-family: LOGO;
+  --meta-font-family: "Roboto Condensed";
   --border-radius: 4px;
 }
 
