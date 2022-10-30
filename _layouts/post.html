@@ -92,7 +92,7 @@ layout: default
     twitter: function(purl, ptitle) {
       url = 'http://twitter.com/intent/tweet?';
       url += '&url=' + encodeURIComponent(purl);
-      url += 'text=' + encodeURIComponent(ptitle);
+      url += '&text=' + encodeURIComponent(ptitle);
       this.popup(url);
     },
     popup: function(url) {
