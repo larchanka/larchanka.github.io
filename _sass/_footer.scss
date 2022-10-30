@@ -1,0 +1,30 @@
+
+.wrapper-footer {
+  margin-top: 1rem;
+  background-color: var(--dark-bg);
+  padding: 2.5rem 0;
+}
+
+footer {
+  color: var(--dimmed-color);
+}
+
+.footer-meta {
+  align-items: flex-start;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  a {
+    color: var(--dimmed-color);
+
+    @include md {
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

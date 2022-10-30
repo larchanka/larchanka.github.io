@@ -1,17 +1,17 @@
 ---
 layout: default
-permalink: /tag/
+permalink: /author/
 ---
 
-<h1>Разделы</h1>
-{% for tag in site.tags %}
+<h1>Авторы</h1>
+{% for tag in site.categories %}
   {% assign tag_name = tag | first %}
-  {% assign tag_title = site.data.tags[tag_name] %}
+  {% assign tag_title = site.data.author[tag_name].name %}
   {% assign count = tag | last | size %}
   <ul class="tags-page-list">
     {% if tag_title %}
       <li>
-        <a href="/tag/{{ tag_name }}/">
+        <a href="/author/{{ tag_name }}/">
           {{ tag_title }} ({{ count }})
         </a>
       </li>

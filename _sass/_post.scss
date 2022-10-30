@@ -1,0 +1,23 @@
+.post {
+  line-height: 1.5;
+  font-size: 1rem;
+}
+
+.post-title {
+  font-family: var(--meta-font-family);
+  font-size: 3rem;
+  line-height: 1;
+  margin-bottom: 1rem;
+  padding-right: 10%;
+}
+
+.post-content {
+  padding: 0 2vw;
+
+  img {
+    position: relative;
+    left: -2vw;
+    right: -2vw;
+    max-width: calc(100% + 4vw);
+  }
+}

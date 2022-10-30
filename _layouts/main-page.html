@@ -1,0 +1,90 @@
+---
+layout: default
+---
+
+<div class="main-page-posts">
+  {% for post in paginator.posts %}
+    <article class="main-page-post">
+      {%if post.preview %}
+        <a href="{{ site.baseurl }}{{ post.url }}"
+          class="main-page-post-preview"
+          style="background-image: url({{ post.preview }})"
+        >
+        </a>
+      {% endif %}
+      <div class="main-page-post-meta">
+        <h2 class="main-page-post-title">
+          <a href="{{ site.baseurl }}{{ post.url }}">
+            {{ post.title }}
+          </a>
+        </h2>
+        <div class="main-page-post-description">
+          {{ post.description }}
+        </div>
+        <div class="main-page-post-additional">
+          {% if site.data.author[post.category] %}
+            <a class="main-page-post-author author" href="/author/{{ post.category | slugify }}"><nobr>{{ site.data.author[post.category].name }}</nobr>&nbsp;</a>
+          {% endif %}
+          <div class="main-page-post-date date">
+            {{ post.updated | date: '%H:%M,' }}
+            {{ post.updated | date: '%d' }}
+            {% assign month = post.updated | date: '%m' %}
+            {{ site.data.month[month].short }}
+          </div>
+          <div class="main-page-post-tags">
+            {% for tag in post.tags %}
+              {% capture tag_name %}{{ tag }}{% endcapture %}
+              {% if site.data.tags[tag_name] %}
+                <a class="tag" href="/tag/{{ tag_name | slugify }}">
+                  <nobr>{{ site.data.tags[tag_name] }}</nobr>
+                </a>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </article>
+  {% endfor %}
+</div>
+
+{% if paginator.total_pages > 1 %}
+{% assign backWrd = 'Назад' %}
+{% assign forwardWrd = 'Вперед' %}
+<div class="pagination">
+  {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path | relative_url }}">&laquo; {{ backWrd }}</a>
+  {% else %}
+    <em>&laquo; {{ backWrd }}</em>
+  {% endif %}
+
+  {% assign sidePageLimit = 2 %}
+  {% assign totalPageLimit = 5 %}
+  {% assign pagination_start = paginator.page | minus: sidePageLimit %}
+  {% if pagination_start < 1 %}
+    {% assign pagination_start = 1 %}
+  {% endif %}
+  {% assign pagination_end = paginator.page | plus: sidePageLimit %}
+  {% if pagination_end > paginator.total_pages %}
+    {% assign pagination_end = paginator.total_pages %}
+  {% endif %}
+  {% if pagination_end < totalPageLimit and paginator.total_pages > totalPageLimit %}
+    {% assign pagination_end = totalPageLimit %}
+  {% endif %}
+
+  {% for page in (pagination_start..pagination_end) %}
+    {% if page == paginator.page %}
+      <em>{{ page }}</em>
+    {% elsif page == 1 %}
+      <a href="/">{{ page }}</a>
+    {% else %}
+      <a href="{{ site.paginate_path | relative_url | replace: ':num', page }}">{{ page }}</a>
+    {% endif %}
+  {% endfor %}
+
+  {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path | relative_url }}">{{ forwardWrd }} &raquo;</a>
+  {% else %}
+    <em>{{ forwardWrd }} &raquo;</em>
+  {% endif %}
+</div>
+{% endif %}

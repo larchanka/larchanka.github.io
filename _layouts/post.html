@@ -3,12 +3,20 @@ layout: default
 ---
 
 <article class="post">
-  <h1>{{ page.title }}</h1>
-  <small class="date">
-    {{ page.updated | date_to_string }}
-  </small>
+  <h1 class="post-title">{{ page.title }}</h1>
+  <div class="row row-space">
+    {% if site.data.author[page.category] %}
+      <a href="/author/{{ page.category | slugify }}"><nobr>{{ site.data.author[page.category].name }}</nobr></a>
+    {% endif %}
+    <small class="date">
+      {{ page.updated | date: '%H:%M,' }}
+      {{ page.updated | date: '%d' }}
+      {% assign month = page.updated | date: '%m' %}
+      {{ site.data.month[month].short }}
+    </small>
+  </div>
 
-  <div class="entry">
+  <div class="post-content">
     {{ content }}
   </div>
 
@@ -28,10 +36,21 @@ layout: default
 
   <div>
     Автор:
-    {% if site.data.author[page.category] %}
-      <a href="/author/{{ category | slugify }}"><nobr>{{ site.data.author[page.category].name }}</nobr></a>
-    {% endif %}
+    
   </div>
 
   {% include disqus.html %}
 </article>
+<script>
+  $(function() {
+    return $("h2, h3, h4, h5, h6").each(function(i, el) {
+      var $el, icon, id;
+      $el = $(el);
+      id = $el.attr('id');
+      icon = '<i class="fa fa-link"></i>';
+      if (id) {
+        return $el.prepend($("<a />").addClass("header-link").attr("href", "#" + id).html(icon));
+      }
+    });
+  });
+</script>  

@@ -1,7 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.title }} – {{ site.description }}</title>
+    <title>
+      {% if page.title %}
+        {% if site.data.tags[page.title] %}
+          {{ site.data.tags[page.title] }}
+        {% elsif site.data.author[page.title] %}
+          {{ site.data.author[page.title].name }}
+        {% else %}
+          {{ page.title }} – 
+        {% endif %}
+        -
+      {% endif %}
+      {{ site.title }} – {{ site.description }}
+    </title>
 
     {% include meta.html %}
     <link rel="stylesheet" async type="text/css" href="{{ site.baseurl }}/style.css" />

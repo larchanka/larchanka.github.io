@@ -1,0 +1,56 @@
+.tag-name {
+  font-family: var(--meta-font-family);
+  font-size: 4rem;
+  box-shadow: inset 0 -.5rem 0 var(--link-color);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+@include md {
+  .author-meta {
+    display: flex;
+    margin-bottom: 2rem;
+    align-items: center;
+    gap: 10%;
+    justify-content: space-between;
+    box-shadow: inset 0 -1rem 0 var(--link-color);
+
+    h2 {
+      font-size: 3rem;
+    }
+
+    &-image {
+      width: 6rem;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+    }
+  }
+}
+
+.sortednews-year {
+  font-weight: 400;
+  font-size: 2rem;
+}
+
+.sortednews-list {
+  display: block;
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--dark-bg);
+
+  li {
+    display: flex;
+    gap: 1rem;
+    padding: .5rem 0;
+
+    span {
+      font-size: .85rem;
+    }
+
+    a {
+      flex: 1;
+    }
+  }
+}

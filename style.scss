@@ -128,11 +128,6 @@ img {
   max-width: none;
 }
 
-.date {
-  font-style: italic;
-  color: $gray;
-}
-
 // Specify the color of the selection
 ::-moz-selection {
   color: $black;
@@ -206,7 +201,6 @@ img {
   margin: 0;
   cursor: pointer;
   padding: .25rem;
-  border-radius: 4px;
   font-family: var(--logo-font-family);
   font-weight: 300;
   font-size: 3.25rem;
@@ -214,6 +208,10 @@ img {
 
   &::first-letter {
     color: var(--link-color);
+  }
+
+  a {
+    transition: color .1s linear;
   }
 }
 
@@ -263,10 +261,19 @@ nav {
 // .main
 //
 
+.date {
+  color: var(--dimmed-color);
+  font-family: var(--date-font-family);
+}
+
 .row {
   display: flex;
   align-items: center;
   gap: 1rem;
+
+  &-space {
+    justify-content: space-between;
+  }
 }
 
 .col {
@@ -298,193 +305,10 @@ a.tag {
   }
 }
 
-.main-page-post-date {
-  color: var(--dimmed-color);
-  font-family: var(--date-font-family);
-}
-
-@include md {
-  .main-page-posts {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: stretch;
-    gap: 2%;
-
-    h2 {
-      font-weight: 400;
-    }
-  }
-
-  .main-page-post-additional {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    align-items: center;
-  }
-
-  .main-page-post-tags {
-    display: flex;
-    gap: .5rem;
-    flex: 1;
-    justify-content: flex-end;
-  }
-
-  .main-page-post {
-    flex-basis: 32%;
-    padding-bottom: 2.5rem;
-
-    .main-page-post-preview {
-      height: 0;
-      padding-bottom: 25%;
-      background-position: center center;
-      background-size: cover;
-      border-radius: var(--border-radius);
-    }
-
-    &:nth-child(2),
-    &:nth-child(3) {
-      flex-basis: 49%;
-    }
-
-    &:not(:nth-child(3)):nth-child(3n+3) {
-      background-color: var(--dark-bg);
-      padding: 0.75rem;
-    }
-
-    &:nth-child(6) {
-      border-radius: var(--border-radius) var(--border-radius) 0 0;
-    }
-
-    &:not(:first-child) {
-      line-height: 1.1;
-
-      .main-page-post-preview {
-        display: block;
-        padding-bottom: 56%;
-        margin-bottom: 1rem;
-      }
-
-      .main-page-post-title {
-        font-size: 1rem;
-        margin-bottom: 0.5rem;
-
-        a:hover {
-          color: var(--dimmed-color);
-        }
-      }
-
-      .main-page-post-author {
-        display: none;
-      }
-
-      .main-page-post-additional {
-        margin-top: 0.5rem;
-        font-size: .8rem;
-      }
-    }
-
-    &:first-child {
-      flex-basis: 100%;
-      display: flex;
-      padding-bottom: 2rem;
-      margin-bottom: 2rem;
-  
-      .main-page-post-preview {
-        flex: 1;
-        flex-basis: 40%;
-      }
-  
-      .main-page-post-meta {
-        flex: 1;
-        flex-basis: 60%;
-        padding-left: 2%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-      }
-
-      .main-page-post-description {
-        display: none;
-      }
-  
-      .main-page-post-title {
-        font-size: 2.25rem;
-        line-height: 1.1;
-        font-weight: 900;
-
-        a {
-          color: var(--header-color);
-          transition: box-shadow .1s linear;
-
-          &:hover {
-            box-shadow: var(--link-color) 0 -1rem 0 inset;
-          }
-        }
-      }
-    }
-  }
-}
-
-.posts > .post {
-  padding-bottom: 2em;
-  border-bottom: 1px solid $lightGray;
-}
-
-.posts > .post:last-child {
-  padding-bottom: 1em;
-  border-bottom: none;
-}
-
-.post {
-  blockquote {
-    margin: 1.8em .8em;
-    border-left: 2px solid $gray;
-    padding: 0.1em 1em;
-    color: $gray;
-    font-size: 22px;
-    font-style: italic;
-  }
-
-  .comments {
-    margin-top: 10px;
-  }
-
-  .read-more {
-    font-size: 12px;
-  }
-}
-
-.wrapper-footer {
-  margin-top: 2rem;
-  background-color: var(--dark-bg);
-  padding: 2.5rem 0;
-}
-
-footer {
-  color: var(--dimmed-color);
-}
-
-.footer-meta {
-  align-items: flex-start;
-}
-
-.footer-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-
-  a {
-    color: var(--dimmed-color);
-
-    @include md {
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-  }
-}
-
-// Settled on moving the import of syntax highlighting to the bottom of the CSS
-// ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
+@import "mainpage";
+@import "post";
+@import "sortednews";
+@import "pagination";
+@import "footer";
 @import "highlights";
 @import "svg-icons";

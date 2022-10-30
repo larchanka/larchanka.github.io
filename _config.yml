@@ -50,7 +50,7 @@ baseurl: ""
 
 permalink: /:year/:month/:day/:title:output_ext
 
-paginate: 20
+paginate: 21
 paginate_path: "/page/:num/"
 
 # The release of Jekyll Now that you're using
@@ -103,7 +103,7 @@ navigation:
   - name: Город
     link: /tag/city
   - name: Происшествия
-    link: /tag/911
+    link: /tag/accident
   - name: + Еще
     link: /tag/
 
