@@ -2,10 +2,12 @@
 layout: default
 ---
 
-{% assign tag_name = page.tag %}
-
+{% assign tag_name = page.title %}
+{{page.posts}}
 <div class="tag">
   <h2 class="tag-name">{{ site.data.tags[tag_name] }}</h2>
+
+  {% assign posts = "" | split: ',' %}
 
   {% assign postsByDay = 
     page.posts | group_by_exp:"post", "post.updated | date: '%Y'" %}
