@@ -158,20 +158,24 @@ img {
 // .masthead
 //
 
-.wrapper-masthead {
-  margin-bottom: 50px;
-}
+@include md {
+  .wrapper-masthead {
+    background-color: var(--page-bg);
+    margin-bottom: 50px;
+    position: sticky;
+    left: 0;
+    top: 0;
+    box-shadow: var(--page-bg) 0 0 2rem;
+  }
 
-.masthead {
-  padding: 1.5rem 0;
-
-  @include mobile {
-    text-align: center;
+  .masthead {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem 0;
   }
 }
 
 .site-avatar {
-  float: left;
   width: 70px;
   height: 70px;
   margin-right: 15px;

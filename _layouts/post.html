@@ -2,55 +2,100 @@
 layout: default
 ---
 
-<article class="post">
-  <h1 class="post-title">{{ page.title }}</h1>
-  <div class="row row-space">
-    {% if site.data.author[page.category] %}
-      <a href="/author/{{ page.category | slugify }}.html"><nobr>{{ site.data.author[page.category].name }}</nobr></a>
-    {% endif %}
-    <small class="date">
-      {{ page.updated | date: '%H:%M,' }}
-      {{ page.updated | date: '%d' }}
-      {% assign month = page.updated | date: '%m' %}
-      {{ site.data.month[month].short }}
-    </small>
-  </div>
+<div class="post-wrapper">
+  <article class="post">
+    <h1 class="post-title">{{ page.title }}</h1>
+    <div class="row row-space">
+      {% if site.data.author[page.category] %}
+        <a href="/author/{{ page.category | slugify }}.html"><nobr>{{ site.data.author[page.category].name }}</nobr></a>
+      {% endif %}
+      <small class="date">
+        {{ page.updated | date: '%H:%M,' }}
+        {{ page.updated | date: '%d' }}
+        {% assign month = page.updated | date: '%m' %}
+        {{ site.data.month[month].short }}
+      </small>
+    </div>
 
-  <div class="post-content">
-    {{ content }}
-  </div>
+    <div class="post-content">
+      {{ content }}
+    </div>
 
-  <div>
-    Теги:
-    [
-      {% for tag in page.tags %}
-        {% capture tag_name %}{{ tag }}{% endcapture %}
-        {% if site.data.tags[tag_name] %}
-          <a href="/tag/{{ tag_name | slugify }}.html">
-            <code class="highligher-rouge"><nobr>{{ site.data.tags[tag_name] }}</nobr></code>
-          </a>
+    <div class="row post-actions">
+
+      <div class="row post-share">
+        <span>Поделиться:</span>
+        <a onclick="Share.facebook(window.location.href,'{{page.title}}')">FB</a>
+        <a onclick="Share.twitter(window.location.href,'{{page.title}}')">TW</a>
+      </div>
+
+      <div class="post-tags">
+        {% for tag in page.tags %}
+          {% capture tag_name %}{{ tag }}{% endcapture %}
+          {% if site.data.tags[tag_name] %}
+            <a class="tag" href="/tag/{{ tag_name | slugify }}.html">
+              <nobr>{{ site.data.tags[tag_name] }}</nobr>
+            </a>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+    </div>
+
+    {% include disqus.html %}
+  </article>
+
+  {% assign adPosts = site.posts %}
+
+  <aside class="post-aside">
+    <ul>
+      <li><h4>Читать еще</h4></li>
+      {% for post in adPosts limit: 5 %}
+        {% if post.url != page.url %}
+          <li>
+            <a href="{{post.url}}">
+              {{ post.title }}
+            </a>
+            <div class="post-aside-date date">
+              {{ post.updated | date: '%H:%M,' }}
+              {{ post.updated | date: '%d' }}
+              {% assign month = post.updated | date: '%m' %}
+              {{ site.data.month[month].short }}
+            </div>
+          </li>
         {% endif %}
       {% endfor %}
-    ]
-  </div>
+    </ul>
+  </aside>
+</div>
 
-  <div>
-    Автор:
-    
-  </div>
-
-  {% include disqus.html %}
-</article>
 <script>
-  $(function() {
-    return $("h2, h3, h4, h5, h6").each(function(i, el) {
-      var $el, icon, id;
-      $el = $(el);
-      id = $el.attr('id');
-      icon = '<i class="fa fa-link"></i>';
-      if (id) {
-        return $el.prepend($("<a />").addClass("header-link").attr("href", "#" + id).html(icon));
-      }
-    });
-  });
+  // $(function() {
+  //   return $("h2, h3, h4, h5, h6").each(function(i, el) {
+  //     var $el, icon, id;
+  //     $el = $(el);
+  //     id = $el.attr('id');
+  //     icon = '<i class="fa fa-link"></i>';
+  //     if (id) {
+  //       return $el.prepend($("<a />").addClass("header-link").attr("href", "#" + id).html(icon));
+  //     }
+  //   });
+  // });
+
+  Share = {
+    facebook: function(purl, _ptitle) {
+      url = 'http://www.facebook.com/sharer/sharer.php?';
+      url += '&u=' + encodeURIComponent(purl);
+      this.popup(url);
+    },
+    twitter: function(purl, ptitle) {
+      url = 'http://twitter.com/intent/tweet?';
+      url += '&url=' + encodeURIComponent(purl);
+      url += 'text=' + encodeURIComponent(ptitle);
+      this.popup(url);
+    },
+    popup: function(url) {
+      window.open(url,'','toolbar=0,status=0,width=626, height=436');
+    }
+  };
 </script>  

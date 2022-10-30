@@ -22,12 +22,12 @@
     {% seo %}
   </head>
 
-  {% assign current = page.url | split: '.' %}
+  {% assign current = page.url %}
 
   <body>
     <div class="wrapper-masthead">
       <div class="container">
-        <header class="masthead clearfix">
+        <header class="masthead">
           <div class="site-info">
             <h1 class="site-name"><a href="{{ site.baseurl }}/">{{ site.title }}</a></h1>
             <p class="site-description">{{ site.description }}</p>
@@ -35,7 +35,7 @@
 
           <nav>
             {% for navItem in site.navigation %}
-            <a href="{{ site.baseurl }}{{ navItem.link }}" id="nav{{ navItem.link | split: '/' | join: '-' }}" {% if current[0] == navItem.link %} class='active'{% endif %}>{{ navItem.name }}</a>
+            <a href="{{ site.baseurl }}{{ navItem.link }}" id="nav{{ navItem.link | split: '/' | join: '-' }}" {% if current == navItem.link %} class='active'{% endif %}>{{ navItem.name }}</a>
             {% endfor %}
           </nav>
         </header>

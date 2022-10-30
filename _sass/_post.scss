@@ -1,3 +1,7 @@
+.post-wrapper {
+  margin-bottom: 2rem;
+}
+
 .post {
   line-height: 1.5;
   font-size: 1rem;
@@ -8,16 +12,60 @@
   font-size: 3rem;
   line-height: 1;
   margin-bottom: 1rem;
-  padding-right: 10%;
 }
 
 .post-content {
-  padding: 0 2vw;
+  padding: 0;
+  font-size: 1.1rem;
+}
 
-  img {
-    position: relative;
-    left: -2vw;
-    right: -2vw;
-    max-width: calc(100% + 4vw);
+.post-tags {
+  margin-top: 2rem;
+  font-size: .85em;
+}
+
+@include md {
+  .post-wrapper {
+    display: flex;
+    width: 100%;
   }
+
+  .post {
+    width: 65%;
+  }
+
+  .post-aside {
+    margin-left: 1.5rem;
+    line-height: 1.4;
+    width: 35%;
+
+    h4 {
+      color: var(--font-color);
+    }
+
+    .post-aside-date {
+      font-size: .85em;
+    }
+
+    ul {
+      position: sticky;
+      left: 0;
+      top: 6.75rem;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+
+      li:not(:first-child) {
+        display: block;
+        padding: 1rem 0.5rem;
+        border-bottom: 1px solid var(--dimmed-color);
+      }
+    }
+  }
+
+  .post-actions {
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
 }
