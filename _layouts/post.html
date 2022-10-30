@@ -17,6 +17,8 @@ layout: default
       </small>
     </div>
 
+    <div id="intNav"></div>
+
     <div class="post-content">
       {{ content }}
     </div>
@@ -70,17 +72,16 @@ layout: default
 </div>
 
 <script>
-  // $(function() {
-  //   return $("h2, h3, h4, h5, h6").each(function(i, el) {
-  //     var $el, icon, id;
-  //     $el = $(el);
-  //     id = $el.attr('id');
-  //     icon = '<i class="fa fa-link"></i>';
-  //     if (id) {
-  //       return $el.prepend($("<a />").addClass("header-link").attr("href", "#" + id).html(icon));
-  //     }
-  //   });
-  // });
+  const intNav = document.getElementById('intNav');
+  const headers = document.querySelectorAll(".post h2, .post h3, .post h4, .post h5, .post h6");
+  if (headers.length) {
+    let list = '<details><summary>Навигация по статье</summary><ul>';
+    headers.forEach(function (header) {
+      list += `<li><a href="#${header.id}">${header.textContent}</a></li>`;
+    });
+    list += '</ul></details>';
+    intNav.innerHTML = list;
+  }
 
   Share = {
     facebook: function(purl, _ptitle) {
