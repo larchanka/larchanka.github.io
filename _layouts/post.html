@@ -6,7 +6,7 @@ layout: default
   <h1 class="post-title">{{ page.title }}</h1>
   <div class="row row-space">
     {% if site.data.author[page.category] %}
-      <a href="/author/{{ page.category | slugify }}"><nobr>{{ site.data.author[page.category].name }}</nobr></a>
+      <a href="/author/{{ page.category | slugify }}.html"><nobr>{{ site.data.author[page.category].name }}</nobr></a>
     {% endif %}
     <small class="date">
       {{ page.updated | date: '%H:%M,' }}
@@ -26,7 +26,7 @@ layout: default
       {% for tag in page.tags %}
         {% capture tag_name %}{{ tag }}{% endcapture %}
         {% if site.data.tags[tag_name] %}
-          <a href="/tag/{{ tag_name | slugify }}">
+          <a href="/tag/{{ tag_name | slugify }}.html">
             <code class="highligher-rouge"><nobr>{{ site.data.tags[tag_name] }}</nobr></code>
           </a>
         {% endif %}

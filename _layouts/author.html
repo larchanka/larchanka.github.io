@@ -2,7 +2,7 @@
 layout: default
 ---
 
-{% assign author_name = page.title %}
+{% assign author_name = page.author %}
 
 <div class="author">
   <div class="author-meta">
@@ -13,9 +13,17 @@ layout: default
       <img src="{{ site.data.author[author_name].image }}" alt="{{ site.data.author[author_name].name }}" />
     </div>
   </div>
+  
+  {% assign posts = "" | split: ',' %}
+
+  {% for post in site.posts %}
+    {% if post.category == author_name %}
+      {% assign posts = posts | push: post %}
+    {% endif %}
+  {% endfor %}
 
   {% assign postsByDay = 
-    page.posts | group_by_exp:"post", "post.updated | date: '%Y'" %}
+    posts | group_by_exp:"post", "post.updated | date: '%Y'" %}
     
   {% if postsByDay and postsByDay.size != 0 %}
 

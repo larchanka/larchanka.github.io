@@ -2,15 +2,21 @@
 layout: default
 ---
 
-{% assign tag_name = page.title %}
-{{page.posts}}
+{% assign tag_name = page.tag %}
+
 <div class="tag">
   <h2 class="tag-name">{{ site.data.tags[tag_name] }}</h2>
 
   {% assign posts = "" | split: ',' %}
 
+  {% for post in site.posts %}
+    {% if post.tags contains tag_name %}
+      {% assign posts = posts | push: post %}
+    {% endif %}
+  {% endfor %}
+  
   {% assign postsByDay = 
-    page.posts | group_by_exp:"post", "post.updated | date: '%Y'" %}
+    posts | group_by_exp:"post", "post.updated | date: '%Y'" %}
     
   {% if postsByDay and postsByDay.size != 0 %}
 

@@ -23,7 +23,7 @@ layout: default
         </div>
         <div class="main-page-post-additional">
           {% if site.data.author[post.category] %}
-            <a class="main-page-post-author author" href="/author/{{ post.category | slugify }}"><nobr>{{ site.data.author[post.category].name }}</nobr>&nbsp;</a>
+            <a class="main-page-post-author author" href="/author/{{ post.category | slugify }}.html"><nobr>{{ site.data.author[post.category].name }}</nobr>&nbsp;</a>
           {% endif %}
           <div class="main-page-post-date date">
             {{ post.updated | date: '%H:%M,' }}
@@ -35,7 +35,7 @@ layout: default
             {% for tag in post.tags %}
               {% capture tag_name %}{{ tag }}{% endcapture %}
               {% if site.data.tags[tag_name] %}
-                <a class="tag" href="/tag/{{ tag_name | slugify }}">
+                <a class="tag" href="/tag/{{ tag_name | slugify }}.html">
                   <nobr>{{ site.data.tags[tag_name] }}</nobr>
                 </a>
               {% endif %}
