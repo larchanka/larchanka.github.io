@@ -5,6 +5,12 @@
 .post {
   line-height: 1.5;
   font-size: 1rem;
+
+  blockquote {
+    margin: 2rem;
+    font-size: 1.25em;
+    font-style: italic;
+  }
 }
 
 .post-title {

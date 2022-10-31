@@ -10,7 +10,7 @@ layout: default
       <h2>{{ site.data.author[author_name].name }}</h2>
     </div>
     <div class="author-meta-image">
-      <img src="{{ site.data.author[author_name].image }}" alt="{{ site.data.author[author_name].name }}" />
+      {% if site.data.author[author_name].image %}<img src="{{ site.data.author[author_name].image }}" alt="{{ site.data.author[author_name].name }}" />{% endif %}
     </div>
   </div>
   

@@ -32,6 +32,15 @@ $georgia: Georgia, serif;
   --logo-font-family: LOGO;
   --meta-font-family: "Roboto Condensed";
   --border-radius: 4px;
+
+  @media (prefers-color-scheme: light) {
+    --page-bg: rgb(221, 221, 221);
+    --dark-bg: rgb(255, 255, 255);
+    --font-color: rgb(45, 45, 45);
+    --dimmed-color: #666;
+    --link-color: #538bc4;
+    --header-color: #000;
+  }
 }
 
 // Mobile breakpoints
