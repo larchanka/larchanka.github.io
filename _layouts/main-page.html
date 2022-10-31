@@ -4,46 +4,12 @@ layout: default
 
 <div class="main-page-posts">
   {% for post in paginator.posts %}
-    <article class="main-page-post">
-      {%if post.preview %}
-        <a href="{{ site.baseurl }}{{ post.url }}"
-          class="main-page-post-preview"
-          style="background-image: url({{ post.preview }})"
-        >
-        </a>
-      {% endif %}
-      <div class="main-page-post-meta">
-        <h2 class="main-page-post-title">
-          <a href="{{ site.baseurl }}{{ post.url }}">
-            {{ post.title }}
-          </a>
-        </h2>
-        <div class="main-page-post-description">
-          {{ post.description }}
-        </div>
-        <div class="main-page-post-additional">
-          {% if site.data.author[post.category] %}
-            <a class="main-page-post-author author" href="/author/{{ post.category | slugify }}.html"><nobr>{{ site.data.author[post.category].name }}</nobr>&nbsp;</a>
-          {% endif %}
-          <div class="main-page-post-date date">
-            {{ post.updated | date: '%H:%M,' }}
-            {{ post.updated | date: '%d' }}
-            {% assign month = post.updated | date: '%m' %}
-            {{ site.data.month[month].short }}
-          </div>
-          <div class="main-page-post-tags">
-            {% for tag in post.tags %}
-              {% capture tag_name %}{{ tag }}{% endcapture %}
-              {% if site.data.tags[tag_name] %}
-                <a class="tag" href="/tag/{{ tag_name | slugify }}.html">
-                  <nobr>{{ site.data.tags[tag_name] }}</nobr>
-                </a>
-              {% endif %}
-            {% endfor %}
-          </div>
-        </div>
+    {% include main-page-post.html %}
+    {% if forloop.index == 1 %}
+      <div class="main-page-post">
+        {% include weather.html %}
       </div>
-    </article>
+    {% endif %}
   {% endfor %}
 </div>
 

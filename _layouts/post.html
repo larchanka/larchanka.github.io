@@ -10,10 +10,8 @@ layout: default
         <a href="/author/{{ page.category | slugify }}.html"><nobr>{{ site.data.author[page.category].name }}</nobr></a>
       {% endif %}
       <small class="date">
-        {{ page.updated | date: '%H:%M,' }}
-        {{ page.updated | date: '%d' }}
-        {% assign month = page.updated | date: '%m' %}
-        {{ site.data.month[month].short }}
+        {% assign formatDate = page.updated %}
+        {% include date.html %}
       </small>
     </div>
 
@@ -59,10 +57,8 @@ layout: default
               {{ post.title }}
             </a>
             <div class="post-aside-date date">
-              {{ post.updated | date: '%H:%M,' }}
-              {{ post.updated | date: '%d' }}
-              {% assign month = post.updated | date: '%m' %}
-              {{ site.data.month[month].short }}
+              {% assign formatDate = post.updated %}
+              {% include date.html %}
             </div>
           </li>
         {% endif %}

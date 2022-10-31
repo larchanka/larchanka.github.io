@@ -1,0 +1,40 @@
+<article class="main-page-post">
+  {%if post.preview %}
+    <a href="{{ site.baseurl }}{{ post.url }}"
+      class="main-page-post-preview"
+      style="background-image: url({{ post.preview }})"
+    >
+    </a>
+  {% endif %}
+  <div class="main-page-post-meta">
+    <h2 class="main-page-post-title">
+      <a href="{{ site.baseurl }}{{ post.url }}">
+        {{ post.title }}
+      </a>
+    </h2>
+    <div class="main-page-post-description">
+      {{ post.description }}
+    </div>
+    <div class="main-page-post-additional">
+      {% if site.data.author[post.category] %}
+        <a class="main-page-post-author author" href="/author/{{ post.category | slugify }}.html">
+          <nobr>{{ site.data.author[post.category].name }}</nobr>
+        </a>
+      {% endif %}
+      <div class="main-page-post-date date">
+        {% assign formatDate = post.updated %}
+        {% include date.html %}
+      </div>
+      <div class="main-page-post-tags">
+        {% for tag in post.tags %}
+          {% capture tag_name %}{{ tag }}{% endcapture %}
+          {% if site.data.tags[tag_name] %}
+            <a class="tag" href="/tag/{{ tag_name | slugify }}.html">
+              <nobr>{{ site.data.tags[tag_name] }}</nobr>
+            </a>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</article>

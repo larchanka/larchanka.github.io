@@ -26,10 +26,8 @@ layout: default
           {% for post in day.items %}
             <li>
               <span class="date">
-                {{ post.updated | date: '%H:%M,' }}
-                {{ post.updated | date: '%d' }}
-                {% assign month = post.updated | date: '%m' %}
-                {{ site.data.month[month].short }}
+                {% assign formatDate = post.updated %}
+                {% include date.html %}
               </span>
               <a href="{{ post.url }}">{{ post.title }}</a>
             </li>
