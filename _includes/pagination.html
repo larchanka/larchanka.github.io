@@ -1,0 +1,41 @@
+{% if paginator.total_pages > 1 %}
+{% assign backWrd = 'Назад' %}
+{% assign forwardWrd = 'Вперед' %}
+<div class="pagination">
+  {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path | relative_url }}">&laquo; {{ backWrd }}</a>
+  {% else %}
+    <em>&laquo; {{ backWrd }}</em>
+  {% endif %}
+
+  {% assign sidePageLimit = 2 %}
+  {% assign totalPageLimit = 5 %}
+  {% assign pagination_start = paginator.page | minus: sidePageLimit %}
+  {% if pagination_start < 1 %}
+    {% assign pagination_start = 1 %}
+  {% endif %}
+  {% assign pagination_end = paginator.page | plus: sidePageLimit %}
+  {% if pagination_end > paginator.total_pages %}
+    {% assign pagination_end = paginator.total_pages %}
+  {% endif %}
+  {% if pagination_end < totalPageLimit and paginator.total_pages > totalPageLimit %}
+    {% assign pagination_end = totalPageLimit %}
+  {% endif %}
+
+  {% for page in (pagination_start..pagination_end) %}
+    {% if page == paginator.page %}
+      <em>{{ page }}</em>
+    {% elsif page == 1 %}
+      <a href="/">{{ page }}</a>
+    {% else %}
+      <a href="{{ site.paginate_path | relative_url | replace: ':num', page }}">{{ page }}</a>
+    {% endif %}
+  {% endfor %}
+
+  {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path | relative_url }}">{{ forwardWrd }} &raquo;</a>
+  {% else %}
+    <em>{{ forwardWrd }} &raquo;</em>
+  {% endif %}
+</div>
+{% endif %}
